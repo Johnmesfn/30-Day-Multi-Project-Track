@@ -26,7 +26,13 @@ delete_parser = subparsers.add_parser("delete", help="Delete a bug")
 delete_parser.add_argument("id", help="Bug ID")
 
 # -------- List Bugs --------
-list_parser = subparsers.add_parser("list", help="List all bugs")
+parser_list = subparsers.add_parser("list", help="List all bugs")
+parser_list.add_argument("--status", help="Filter by status")
+parser_list.add_argument("--priority", help="Filter by priority")
+
+# -------- Search Bugs --------
+search_parser = subparsers.add_parser("search", help="Search bugs by title or description")
+search_parser.add_argument("query", help="Search query")
 
 args = parser.parse_args()
 
@@ -70,7 +76,23 @@ elif args.command == "delete":
         print_bugs()
 
 elif args.command == "list":
-    bugs = load_bugs()
-    print_bugs()
+    from bugs.manager import list_bugs
+    bugs = list_bugs(status=args.status, priority=args.priority)
+    if not bugs:
+        print("No bugs found.")
+    else:
+        print("\nAvailable Bugs:")
+        for bug in bugs:
+            print(f"  [{bug.id}] {bug.title} - Priority: {bug.priority}, Status: {bug.status}")
+
+elif args.command == "search":
+    from bugs.manager import search_bugs
+    bugs = search_bugs(args.query)
+    if not bugs:
+        print("No bugs found.")
+    else:
+        print("\nAvailable Bugs:")
+        for bug in bugs:
+            print(f"  [{bug.id}] {bug.title} - Priority: {bug.priority}, Status: {bug.status}")
 else:
     print("Invalid command. Use 'add', 'update', 'delete', or 'list'.")

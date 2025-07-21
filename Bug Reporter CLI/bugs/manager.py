@@ -66,3 +66,19 @@ def delete_bug(bug_id):
             save_bugs(bugs)
             return True
     return False
+
+def list_bugs(status=None, priority=None):
+    bugs = load_bugs()
+    filtered_bugs = []
+    for bug in bugs:
+        if status and bug.status != status:
+            continue
+        if priority and bug.priority != priority:
+            continue
+        filtered_bugs.append(bug)
+    return filtered_bugs
+
+def search_bugs(query):
+    bugs = load_bugs()
+    query = query.lower()
+    return [bug for bug in bugs if query.lower() in bug.title.lower() or query.lower() in bug.description.lower()]
