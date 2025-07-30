@@ -7,7 +7,8 @@
         "status": "open",
         "created_at": "2025-07-21T12:16:42.052715",
         "updated_at": "2025-07-21T12:16:42.052715",
-        "assigned_to": null
+        "assigned_to": null,
+        "comments": []
     },
     {
         "id": "71478796-2e0e-4273-9c70-2644e5455b12",
@@ -17,7 +18,8 @@
         "status": "open",
         "created_at": "2025-07-21T12:17:48.836191",
         "updated_at": "2025-07-21T12:17:48.836191",
-        "assigned_to": null
+        "assigned_to": null,
+        "comments": []
     },
     {
         "id": "b168ccff-29f1-4452-bf0f-74d2be122ca1",
@@ -27,7 +29,8 @@
         "status": "open",
         "created_at": "2025-07-21T15:07:00.186192",
         "updated_at": "2025-07-21T15:07:00.186192",
-        "assigned_to": "dev1"
+        "assigned_to": "dev1",
+        "comments": []
     },
     {
         "id": "00642508-f945-49c9-a513-9d945b0e6d3f",
@@ -37,7 +40,8 @@
         "status": "closed",
         "created_at": "2025-07-21T15:07:00.187688",
         "updated_at": "2025-07-21T15:07:00.188072",
-        "assigned_to": null
+        "assigned_to": null,
+        "comments": []
     },
     {
         "id": "72a72a5e-50f8-4788-b9f1-9f6b386d9278",
@@ -46,8 +50,11 @@
         "priority": "high",
         "status": "open",
         "created_at": "2025-07-21T12:12:34.144782",
-        "updated_at": "2025-07-21T12:12:34.144782",
-        "assigned_to": null
+        "updated_at": "2025-07-21T16:55:20.520819",
+        "assigned_to": null,
+        "comments": [
+            "[2025-07-21T16:55:20.520805] Tested fix on staging, still failing"
+        ]
     },
     {
         "id": "54ee47a1-aa25-43a6-aafb-827b5321a38f",
@@ -57,7 +64,8 @@
         "status": "open",
         "created_at": "2025-07-21T15:29:25.583452",
         "updated_at": "2025-07-21T15:29:25.583452",
-        "assigned_to": "dev1"
+        "assigned_to": "dev1",
+        "comments": []
     },
     {
         "id": "864e66c8-4b23-41c3-b05e-aa43e0ff0528",
@@ -67,6 +75,73 @@
         "status": "closed",
         "created_at": "2025-07-21T15:29:25.584572",
         "updated_at": "2025-07-21T15:29:25.584833",
-        "assigned_to": null
+        "assigned_to": null,
+        "comments": []
+    },
+    {
+        "id": "0e490870-7f9d-47b8-bc25-64206b5dc4d4",
+        "title": "Test Bug",
+        "description": "This is a test",
+        "priority": "medium",
+        "status": "open",
+        "created_at": "2025-07-21T16:45:59.571062",
+        "updated_at": "2025-07-21T16:45:59.571062",
+        "assigned_to": "dev1",
+        "comments": []
+    },
+    {
+        "id": "a12c6579-8389-491d-81eb-e9ecdfa07e42",
+        "title": "New Title",
+        "description": "Old Desc",
+        "priority": "low",
+        "status": "open",
+        "created_at": "2025-07-21T16:45:59.572007",
+        "updated_at": "2025-07-30T15:09:12.389786",
+        "assigned_to": null,
+        "comments": []
+    },
+    {
+        "id": "24c91179-c0f5-4468-883e-c9c106ce2144",
+        "title": "Hello",
+        "description": "test",
+        "priority": "low",
+        "status": "open",
+        "created_at": "2025-07-30T14:57:46.655565",
+        "updated_at": "2025-07-30T14:57:46.655565",
+        "assigned_to": null,
+        "comments": []
+    },
+    {
+        "id": "0fec11d0-878e-4e13-a034-77bcf9342e32",
+        "title": "Test Bug",
+        "description": "This is a test",
+        "priority": "medium",
+        "status": "open",
+        "created_at": "2025-07-30T15:15:46.117194",
+        "updated_at": "2025-07-30T15:15:46.117194",
+        "assigned_to": "dev1",
+        "comments": []
+    },
+    {
+        "id": "bdb91c0f-4276-4057-96ea-366291997792",
+        "title": "New Title",
+        "description": "Old Desc",
+        "priority": "low",
+        "status": "closed",
+        "created_at": "2025-07-30T15:15:46.119036",
+        "updated_at": "2025-07-30T15:15:46.119689",
+        "assigned_to": null,
+        "comments": []
+    },
+    {
+        "id": "518786ca-56a8-435a-b4f1-944c4cea7f6d",
+        "title": "Sample Bug",
+        "description": "Something is broken",
+        "priority": "medium",
+        "status": "resolved",
+        "created_at": "2025-07-30T15:15:46.127258",
+        "updated_at": "2025-07-30T15:15:46.128014",
+        "assigned_to": "Alice",
+        "comments": []
     }
 ]
