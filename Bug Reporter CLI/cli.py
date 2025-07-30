@@ -34,6 +34,20 @@ parser_list.add_argument("--priority", help="Filter by priority")
 search_parser = subparsers.add_parser("search", help="Search bugs by title or description")
 search_parser.add_argument("query", help="Search query")
 
+# -------- Comments --------
+comment_parser = subparsers.add_parser("comment", help="Add a comment to a bug")
+comment_parser.add_argument("bug_id", help="Bug ID")
+comment_parser.add_argument("comment", help="Comment content")
+
+# -------- View All Bugs --------
+view_parser = subparsers.add_parser("view", help="View all bugs")
+view_parser.add_argument("id", help="Bug ID")
+
+# -------- Update Status --------
+status_parser = subparsers.add_parser("status", help="Update bug status")
+status_parser.add_argument("bug_id", help="Bug ID")
+status_parser.add_argument("--to", required=True, help="New status (e.g., open, closed)")
+
 args = parser.parse_args()
 
 # -------- Handle Commands --------
@@ -68,7 +82,7 @@ elif args.command == "delete":
     try:
         deleted = delete_bug(args.id)
         if deleted:
-            print(f"Bug deleted: {deleted.to_dict()}")
+            print(f"Bug deleted successfully.")
         else:
             print("Bug not found.")
     except Exception as e:
@@ -94,5 +108,22 @@ elif args.command == "search":
         print("\nAvailable Bugs:")
         for bug in bugs:
             print(f"  [{bug.id}] {bug.title} - Priority: {bug.priority}, Status: {bug.status}")
+
+elif args.command == "comment":
+    from bugs.manager import add_comment
+    try:
+        comment = add_comment(args.bug_id, args.comment)
+        print(f"Comment added to bug {args.bug_id}: {comment}")
+    except Exception as e:
+        print(f"Error adding comment: {e}")
+
+elif args.command == "status":
+    from bugs.manager import update_status
+    try:
+        update_status(args.bug_id, args.to.lower())
+        print(f"Bug {args.bug_id} status updated to '{args.to}'")
+    except Exception as e:
+        print(f"Error updating status: {e}")
+
 else:
-    print("Invalid command. Use 'add', 'update', 'delete', or 'list'.")
+    print("Invalid command. Use 'add', 'update', 'delete', 'list', or 'status'.")
