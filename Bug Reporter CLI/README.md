@@ -6,32 +6,34 @@ A simple command-line tool to help you track and manage bugs in your project. Yo
 
 ## 📦 Features
 
-* Create new bug reports with title, description, priority, and assignee
-* Update bug details and status
-* Add comments to bugs
-* Delete bugs by ID
-* List bugs with optional filtering by status or priority
-* Persistent storage in a local JSON file (`bugs.json`)
-* Fully tested with Pytest
-* Packaged with Docker for easy deployment
+* Create new bug reports with title, description, priority, and assignee  
+* Update bug details and status  
+* Add comments to bugs  
+* Delete bugs by ID  
+* List bugs with optional filtering by status or priority  
+* Persistent storage in a local JSON file (`bugs.json`)  
+* Fully tested with Pytest  
+* Packaged with Docker for easy deployment  
 
 ---
 
 ## 📁 Project Structure
 
 ```
+
 Bug Reporter CLI/
 ├── bugs/
 │   ├── models.py          # Bug class definition
 │   └── manager.py         # Core bug operations (load, save, add, update, delete)
 ├── tests/
-│   └── test_manager.py    # Unit tests for manager module
+│   └── test\_manager.py    # Unit tests for manager module
 ├── bugs.json              # JSON file storing bug data
 ├── cli.py                 # Main CLI script using argparse
 ├── Dockerfile             # Docker configuration
 ├── requirements.txt       # Python dependencies
 └── README.md              # This file
-```
+
+````
 
 ---
 
@@ -45,7 +47,7 @@ cd Bug-Reporter-CLI
 python3 -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
-```
+````
 
 ---
 
@@ -99,7 +101,8 @@ python cli.py delete <bug-id>
 python cli.py list --status open --priority high
 ```
 
-* Filters are optional. You can list all bugs with just `python cli.py list`.
+* Filters are optional. You can list all bugs with just:
+  `python cli.py list`
 
 #### Search bugs by keyword
 
@@ -118,16 +121,10 @@ python cli.py comment <bug-id> "This bug needs urgent attention."
 #### Update bug status
 
 ```bash
-python cli.py status <bug-id> --to closed
+python cli.py status <bug-id> <new_status>
 ```
 
 * Valid statuses: `open`, `in_progress`, `resolved`, `closed`.
-
-#### View bug details
-
-```bash
-python cli.py view <bug-id>
-```
 
 ---
 
@@ -139,7 +136,7 @@ Build the Docker image:
 docker build -t bug-reporter-cli .
 ```
 
-Run commands inside the container (mount current directory as `/app`):
+Run commands inside the container (mount current directory as `/app` so data persists):
 
 ```bash
 docker run --rm -v "$(pwd)":/app bug-reporter-cli add --title "Sample bug" --description "Details" --priority high
@@ -154,3 +151,22 @@ docker run --rm -v "$(pwd)":/app bug-reporter-cli add --title "Sample bug" --des
 * The CLI expects valid UUIDs for all operations involving bug IDs.
 * Status updates and comments update the bug's `updated_at` timestamp.
 * Feel free to extend with more features or integrate into your workflow.
+
+---
+
+## 🆕 Recent Updates
+
+* Fixed bug addition to accept correct parameters (no unexpected keyword args)
+* Improved error handling with clear messages when bugs are not found
+* Added support for adding comments and updating bug statuses
+* Comprehensive Pytest coverage for core functions
+* Dockerfile updated for consistent environment and easy deployment
+
+---
+
+Thanks for using Bug Reporter CLI! Feel free to open issues or submit pull requests to help improve the tool.
+
+```
+
+Let me know if you want me to format or add anything else before you push!
+```
